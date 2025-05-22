@@ -1,0 +1,69 @@
+/* Elimina o limita estilos globales como estos:
+body, div, h2, input, button { ... }
+*/
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f3f0ea;
+}
+
+/* Título */
+.login-container h2 {
+  text-align: center;
+  color: #4e342e;
+  margin-bottom: 24px;
+}
+
+/* Inputs */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  color: #000;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #f9f7f3;
+}
+
+/* Botones */
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background-color: #8d6e63;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-container button:hover {
+  background-color: #6d4c41;
+}
+
+/* Botón de alternancia */
+.login-container button:last-of-type {
+  background-color: transparent;
+  color: #6d4c41;
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 16px;
+  text-decoration: underline;
+}
+
+.login-container button:last-of-type:hover {
+  background-color: transparent;
+  color: #3e2723;
+  text-decoration: none;
+}

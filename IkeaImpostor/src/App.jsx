@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
-import Inicio from './pages/Inicio';
-import Carrito from './pages/Carrito';
-import Favoritos from './pages/Favoritos';
-import Historial from './pages/Historial';
-import Login from './pages/Login';
-import Producto from './pages/Producto';
+import Inicio from './pages/Inicio/Inicio';
+import Carrito from './pages/Carrito/Carrito';
+import Favoritos from './pages/Favoritos/Favoritos';
+import Historial from './pages/Historial/Historial';
+import Login from './pages/Login/Login';
+import Producto from './pages/Producto/Producto';
 
 import './App.css'
 

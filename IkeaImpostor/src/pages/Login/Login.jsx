@@ -1,6 +1,7 @@
 // src/pages/Login.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 export default function Login({ onLogin }) {
   const [usuario, setUsuario] = useState('');
@@ -39,28 +40,29 @@ export default function Login({ onLogin }) {
 }
 
   return (
-    <div>
-      <h2>{esRegistro ? "Registrarse" : "Iniciar sesión"}</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={usuario}
-          onChange={(e) => setUsuario(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">{esRegistro ? "Registrar" : "Ingresar"}</button>
-      </form>
-      <button onClick={() => setEsRegistro(!esRegistro)}>
-        {esRegistro ? "Ya tengo cuenta" : "Quiero registrarme"}
-      </button>
-    </div>
-  );
+  <div className="login-container">
+    <h2>{esRegistro ? "Registrarse" : "Iniciar sesión"}</h2>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Usuario"
+        value={usuario}
+        onChange={(e) => setUsuario(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <button type="submit">{esRegistro ? "Registrar" : "Ingresar"}</button>
+    </form>
+    <button onClick={() => setEsRegistro(!esRegistro)}>
+      {esRegistro ? "Ya tengo cuenta" : "Quiero registrarme"}
+    </button>
+  </div>
+);
+
 }

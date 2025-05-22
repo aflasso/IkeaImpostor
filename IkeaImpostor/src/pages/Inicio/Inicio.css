@@ -1,0 +1,70 @@
+/* Contenedor principal */
+.inicio-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Tarjeta de producto */
+.producto-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 220px;
+  height: 370px; /* 🔧 Altura fija para uniformidad */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Distribuye verticalmente */
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Modelo 3D */
+model-viewer {
+  width: 100%;
+  height: 160px; /* 🔧 Reducido para que no consuma tanto espacio */
+  border-radius: 8px;
+  background-color: #fafafa;
+  margin-bottom: 1rem;
+}
+
+/* Nombre del producto */
+.producto-card h3 {
+  font-size: 1rem;
+  color: #4e342e;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+/* Precio */
+.producto-card p {
+  font-size: 0.9rem;
+  color: #6d4c41;
+  margin-bottom: 1rem;
+}
+
+/* Botón */
+.producto-card button {
+  background-color: #8d6e63;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: auto;
+}
+
+.producto-card button:hover {
+  background-color: #5d4037;
+}

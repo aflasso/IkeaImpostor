@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import productos from '../../data';
+import productos from '../../../data';
 import '@google/model-viewer';
 
 export default function Producto() {
@@ -9,22 +9,32 @@ export default function Producto() {
 
   if (!producto) return <p>Producto no encontrado</p>;
 
+  // Agregar producto al carrito en localStorage
   const handleAgregarAlCarrito = () => {
+    if (!usuario) {
+      alert("Debe iniciar sesión para agregar productos al carrito");
+      return;
+    }
     const clave = `carrito_${usuario}`;
     const carrito = JSON.parse(localStorage.getItem(clave)) || [];
 
     const index = carrito.findIndex((item) => item.id === producto.id);
     if (index !== -1) {
-      carrito[index].cantidad += 1;
+      carrito[index].cantidad += 1; // Incrementa cantidad si ya existe
     } else {
-      carrito.push({ id: producto.id, cantidad: 1 });
+      carrito.push({ id: producto.id, cantidad: 1 }); // Nuevo producto
     }
 
     localStorage.setItem(clave, JSON.stringify(carrito));
     alert("Producto agregado al carrito");
   };
 
+  // Agregar producto a favoritos en localStorage
   const handleAgregarAFavoritos = () => {
+    if (!usuario) {
+      alert("Debe iniciar sesión para agregar favoritos");
+      return;
+    }
     const clave = `favoritos_${usuario}`;
     const favoritos = JSON.parse(localStorage.getItem(clave)) || [];
 
