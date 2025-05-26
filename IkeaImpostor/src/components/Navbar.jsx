@@ -1,24 +1,22 @@
+// src/components/Navbar.jsx
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-const Navbar = ({ usuario, logOut, totalFavoritos, totalCarrito }) => {
+export default function Navbar({ usuario, logOut, carritoCount, favoritosCount }) {
   return (
-    <nav style={{ display: 'flex', gap: '1rem', justifyContent: 'space-between', padding: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <Link to="/inicio">Inicio</Link>
-        <Link to="/carrito">
-          Carrito <span style={{ color: 'green' }}>({totalCarrito})</span>
-        </Link>
-        <Link to="/favoritos">
-          Favoritos <span style={{ color: 'red' }}>({totalFavoritos})</span>
-        </Link>
-        <Link to="/historial">Historial</Link>
-      </div>
-      <div>
-        <span>👤 {usuario}</span>
-        <button onClick={logOut} style={{ marginLeft: '1rem' }}>Cerrar sesión</button>
-      </div>
-    </nav>
+    <header>
+      <nav className="navbar">
+        <div className="nav-links">
+          <Link to="/inicio">Inicio</Link>
+          <Link to="/carrito">Carrito 🛒 ({carritoCount})</Link>
+          <Link to="/favoritos">Favoritos ❤️ ({favoritosCount})</Link>
+          <Link to="/historial">Historial</Link>
+        </div>
+        <div className="usuario">
+          <span>👤 {usuario}</span>
+          <button onClick={logOut}>Cerrar sesión</button>
+        </div>
+      </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}
