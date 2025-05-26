@@ -2,11 +2,13 @@ import productos from '../../../data';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '@google/model-viewer';
+import { useOutletContext } from 'react-router-dom';
 
 export default function Favoritos() {
   const usuario = localStorage.getItem('usuario');
   const [favoritos, setFavoritos] = useState([]);
   const navigate = useNavigate();
+  const { actualizarFavoritos } = useOutletContext();
 
   useEffect(() => {
     const clave = `favoritos_${usuario}`;
@@ -36,6 +38,7 @@ export default function Favoritos() {
     setFavoritos(nuevaLista);
     const idsActualizados = nuevaLista.map(p => p.id);
     localStorage.setItem(clave, JSON.stringify(idsActualizados));
+    actualizarFavoritos();
   };
 
   return (

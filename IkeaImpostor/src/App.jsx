@@ -7,6 +7,7 @@ import Favoritos from './pages/Favoritos/Favoritos';
 import Historial from './pages/Historial/Historial';
 import Login from './pages/Login/Login';
 import Producto from './pages/Producto/Producto';
+import FinalizarCompra from './pages/FinalizarCompra/FinalizarCompra';
 
 import './App.css'
 
@@ -36,6 +37,7 @@ function App() {
         ) : (
           <Route path="/" element={<Layout logOut={handleLogout} usuario={usuario} />}>
             <Route index element={<Navigate to="/inicio" replace />} />
+            <Route path="/finalizar" element={<FinalizarCompra />} />
             <Route path="inicio" element={<Inicio />} />
             <Route path="carrito" element={<Carrito />} />
             <Route path="favoritos" element={<Favoritos />} />

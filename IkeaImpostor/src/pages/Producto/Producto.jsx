@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom';
 import productos from '../../../data';
 import '@google/model-viewer';
+import { useOutletContext } from 'react-router-dom';
 
 export default function Producto() {
   const { id } = useParams();
   const producto = productos.find((p) => p.id === parseInt(id));
   const usuario = localStorage.getItem('usuario');
+  const { actualizarCarrito, actualizarFavoritos } = useOutletContext();
 
   if (!producto) return <p>Producto no encontrado</p>;
 
@@ -27,6 +29,7 @@ export default function Producto() {
 
     localStorage.setItem(clave, JSON.stringify(carrito));
     alert("Producto agregado al carrito");
+    actualizarCarrito();
   };
 
   // Agregar producto a favoritos en localStorage
@@ -37,15 +40,19 @@ export default function Producto() {
     }
     const clave = `favoritos_${usuario}`;
     const favoritos = JSON.parse(localStorage.getItem(clave)) || [];
+    
 
     if (favoritos.includes(producto.id)) {
       alert("Este producto ya está en favoritos");
       return;
+
+    
     }
 
     favoritos.push(producto.id);
     localStorage.setItem(clave, JSON.stringify(favoritos));
     alert("Agregado a favoritos");
+    actualizarFavoritos();
   };
 
   return (
