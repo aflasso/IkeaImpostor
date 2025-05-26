@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '@google/model-viewer';
 import { useOutletContext } from 'react-router-dom';
+import './Favoritos.css';
+
 
 export default function Favoritos() {
   const usuario = localStorage.getItem('usuario');
   const [favoritos, setFavoritos] = useState([]);
   const navigate = useNavigate();
-  const { actualizarFavoritos } = useOutletContext();
+  const { actualizarFavoritos, actualizarCarrito } = useOutletContext();
+  const [mensajeCarrito, setMensajeCarrito] = useState('');
 
   useEffect(() => {
     const clave = `favoritos_${usuario}`;
@@ -29,7 +32,10 @@ export default function Favoritos() {
     }
 
     localStorage.setItem(clave, JSON.stringify(carrito));
-    alert("Producto agregado al carrito");
+    actualizarCarrito();
+
+    setMensajeCarrito(`"${producto.nombre}" se agregó al carrito 🛒`);
+    setTimeout(() => setMensajeCarrito(''), 3000);
   };
 
   const handleEliminarFavorito = (id) => {
@@ -41,32 +47,40 @@ export default function Favoritos() {
     actualizarFavoritos();
   };
 
+  // 🔧 Aquí estaba el problema: faltaba el return
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', padding: '2rem' }}>
-      {favoritos.map((producto) => (
-        <div key={producto.id} style={{ width: '250px', backgroundColor: '#fff', padding: '1rem', borderRadius: '10px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', textAlign: 'center' }}>
-          <model-viewer
-            src={producto.modelo}
-            alt={`Modelo de ${producto.nombre}`}
-            auto-rotate
-            camera-controls
-            style={{ width: '100%', height: '200px', marginBottom: '1rem' }}
-          ></model-viewer>
-          <h3>{producto.nombre}</h3>
-          <p>${producto.precio.toFixed(2)}</p>
-          <div style={{ marginTop: '1rem' }}>
-            <button onClick={() => handleAgregarAlCarrito(producto)} style={{ marginRight: '0.5rem' }}>
-              Agregar al carrito 🛒
-            </button>
-            <button onClick={() => navigate(`/producto/${producto.id}`)} style={{ marginRight: '0.5rem' }}>
-              Ver más
-            </button>
-            <button onClick={() => handleEliminarFavorito(producto.id)} style={{ backgroundColor: '#e74c3c', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '5px' }}>
-              Quitar ❌
-            </button>
-          </div>
+    <div className="favoritos-container">
+      {mensajeCarrito && <div className="notificacion">{mensajeCarrito}</div>}
+
+      {favoritos.length === 0 ? (
+        <div className="mensaje-vacio">
+          <h2>No tienes productos en favoritos</h2>
+          <p>Agrega tus productos preferidos para verlos aquí ❤️</p>
         </div>
-      ))}
+      ) : (
+        favoritos.map((producto) => (
+          <div key={producto.id} className="favorito-card">
+            <model-viewer
+              src={producto.modelo}
+              alt={`Modelo de ${producto.nombre}`}
+              auto-rotate
+              camera-controls
+            ></model-viewer>
+            <h3>{producto.nombre}</h3>
+            <p>${producto.precio.toFixed(2)}</p>
+            <div>
+              <button onClick={() => handleAgregarAlCarrito(producto)}>Agregar al carrito 🛒</button>
+              <button onClick={() => navigate(`/producto/${producto.id}`)}>Ver más</button>
+              <button onClick={() => handleEliminarFavorito(producto.id)}>Quitar ❌</button>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }
+
+
+
+
+

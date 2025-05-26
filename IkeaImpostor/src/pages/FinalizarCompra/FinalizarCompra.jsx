@@ -47,7 +47,7 @@ export default function FinalizarCompra() {
   if (productosEnCarrito.length === 0) return <p>No hay productos para finalizar la compra.</p>;
 
   return (
-    <div style={{ maxWidth: '800px', margin: '2rem auto' }}>
+    <div className="finalizar-container">
       <h2>Formulario de Envío</h2>
       <input name="nombre" onChange={handleChange} placeholder="Nombre completo" required />
       <input name="direccion" onChange={handleChange} placeholder="Dirección" required />
@@ -68,7 +68,7 @@ export default function FinalizarCompra() {
 
       <button
         onClick={handleConfirmar}
-        style={{ marginTop: '1rem', padding: '0.5rem 1rem', backgroundColor: 'green', color: 'white', border: 'none', borderRadius: '5px' }}
+        className="btn-confirmar"
       >
         Confirmar compra
       </button>

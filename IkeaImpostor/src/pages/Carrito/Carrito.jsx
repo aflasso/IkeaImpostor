@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import productos from '../../../data';
 import '@google/model-viewer';
 import { useOutletContext, useNavigate } from 'react-router-dom';
+import './Carrito.css';
 
 export default function Carrito() {
   const usuario = localStorage.getItem('usuario');
@@ -53,61 +54,66 @@ export default function Carrito() {
 
   const irAFinalizarCompra = () => {
     navigate('/finalizar', {
-  state: {
-    productosEnCarrito,
-    subtotal,
-    iva,
-    total
-  }
-});
-
+      state: {
+        productosEnCarrito,
+        subtotal,
+        iva,
+        total
+      }
+    });
   };
 
-  if (!usuario) return <p>Inicia sesión para ver tu carrito.</p>;
-  if (productosEnCarrito.length === 0) return <p>Tu carrito está vacío.</p>;
+  if (!usuario) return (
+    <div className="mensaje-vacio">
+      <h2>Inicia sesión para ver tu carrito</h2>
+      <p>Por favor, inicia sesión para poder agregar productos y realizar compras.</p>
+    </div>
+  );
+
+  if (productosEnCarrito.length === 0) return (
+    <div className="mensaje-vacio">
+      <h2>Tu carrito está vacío</h2>
+      <p>Añade productos y aquí los verás para que puedas comprarlos ❤️</p>
+    </div>
+  );
 
   return (
-    <div style={{ maxWidth: '900px', margin: '2rem auto' }}>
-      <h2>Carrito de compras</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div className="carrito-container">
+      <h2 className="carrito-titulo">Carrito de compras</h2>
+      <div className="carrito-items">
         {productosEnCarrito.map((item) => (
-          <div key={item.id} style={{ border: '1px solid #ccc', borderRadius: '10px', padding: '1rem' }}>
+          <div key={item.id} className="carrito-card">
             <h3>{item.nombre}</h3>
             <model-viewer
               src={item.modelo}
               alt={`Modelo de ${item.nombre}`}
               auto-rotate
               camera-controls
-              style={{ width: '100%', height: '300px', maxWidth: '600px', margin: 'auto' }}
+              className="carrito-modelo"
             ></model-viewer>
-            <p>Cantidad: 
+            <p>
+              Cantidad:
               <input
                 type="number"
                 min="1"
                 value={item.cantidad}
                 onChange={(e) => modificarCantidad(item.id, parseInt(e.target.value))}
-                style={{ marginLeft: '0.5rem', width: '60px' }}
+                className="carrito-input-cantidad"
               />
             </p>
             <p>Precio unitario: ${item.precio.toFixed(2)}</p>
             <p>Total: ${(item.precio * item.cantidad).toFixed(2)}</p>
-            <button
-              onClick={() => eliminarDelCarrito(item.id)}
-              style={{ marginTop: '1rem', backgroundColor: '#e74c3c', color: 'white', border: 'none', padding: '0.5rem 1rem', borderRadius: '5px' }}
-            >
+            <button onClick={() => eliminarDelCarrito(item.id)} className="carrito-quitar-btn">
               ❌ Quitar del carrito
             </button>
           </div>
         ))}
       </div>
-      <div style={{ marginTop: '2rem' }}>
+      <div className="carrito-resumen">
         <p>Subtotal: ${subtotal.toFixed(2)}</p>
         <p>IVA (19%): ${iva.toFixed(2)}</p>
         <h3>Total general: ${total.toFixed(2)}</h3>
-        <button
-          onClick={irAFinalizarCompra}
-          style={{ marginTop: '1rem', backgroundColor: '#27ae60', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '8px', fontSize: '1rem' }}
-        >
+        <button onClick={irAFinalizarCompra} className="carrito-pagar-btn">
           💳 Pagar
         </button>
       </div>

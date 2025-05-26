@@ -1,0 +1,92 @@
+.producto-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.producto-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+model-viewer {
+  width: 100%;
+  max-width: 500px;
+  height: 350px;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  border-radius: 15px;
+  background: #f0f0f0;
+}
+
+.producto-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.producto-container h3 {
+  font-size: 1.5rem;
+  color: #1a73e8;
+  margin-bottom: 1.5rem;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.botones button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.botones button:first-child {
+  background-color: #1a73e8;
+  color: white;
+}
+
+.botones button:first-child:hover {
+  background-color: #0c5ed7;
+}
+
+.botones button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.botones button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .producto-container {
+    padding: 1rem;
+  }
+
+  model-viewer {
+    height: 300px;
+  }
+
+  .botones {
+    flex-direction: column;
+  }
+
+  .botones button {
+    width: 100%;
+  }
+}

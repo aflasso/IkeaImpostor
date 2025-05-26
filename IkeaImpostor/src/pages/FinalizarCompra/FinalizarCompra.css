@@ -1,0 +1,88 @@
+.finalizar-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.finalizar-container h2,
+.finalizar-container h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.finalizar-container input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: border 0.3s;
+}
+
+.finalizar-container input:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+.finalizar-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.finalizar-container li {
+  background: rgba(240, 240, 240, 0.8);
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.finalizar-container p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  text-align: right;
+  color: #444;
+}
+
+.finalizar-container p strong {
+  font-size: 1.2rem;
+  color: #1a73e8;
+}
+
+.finalizar-container button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.finalizar-container button:hover {
+  background-color: #218838;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .finalizar-container {
+    padding: 1rem;
+  }
+
+  .finalizar-container p {
+    text-align: left;
+  }
+}

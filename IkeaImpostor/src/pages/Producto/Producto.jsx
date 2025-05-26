@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import productos from '../../../data';
 import '@google/model-viewer';
 import { useOutletContext } from 'react-router-dom';
+import './Producto.css';
+
 
 export default function Producto() {
   const { id } = useParams();
@@ -56,26 +58,25 @@ export default function Producto() {
   };
 
   return (
-    <div style={{ maxWidth: '800px', margin: '2rem auto', textAlign: 'center' }}>
-      <h2>{producto.nombre}</h2>
-      <model-viewer
-        src={producto.modelo}
-        alt={`Modelo de ${producto.nombre}`}
-        auto-rotate
-        camera-controls
-        style={{ width: '100%', height: '500px' }}
-      ></model-viewer>
-      <p>{producto.descripcion}</p>
-      <h3>${producto.precio.toFixed(2)}</h3>
+  <div className="producto-container">
+    <h2>{producto.nombre}</h2>
+    <model-viewer
+      src={producto.modelo}
+      alt={`Modelo de ${producto.nombre}`}
+      auto-rotate
+      camera-controls
+    ></model-viewer>
+    <p>{producto.descripcion}</p>
+    <h3>${producto.precio.toFixed(2)}</h3>
 
-      <div style={{ marginTop: '1rem' }}>
-        <button onClick={handleAgregarAlCarrito} style={{ marginRight: '1rem' }}>
-          Agregar al carrito 🛒
-        </button>
-        <button onClick={handleAgregarAFavoritos}>
-          Agregar a favoritos ❤️
-        </button>
-      </div>
+    <div className="botones">
+      <button onClick={handleAgregarAlCarrito}>
+        Agregar al carrito 🛒
+      </button>
+      <button onClick={handleAgregarAFavoritos}>
+        Agregar a favoritos ❤️
+      </button>
     </div>
-  );
+  </div>
+);
 }

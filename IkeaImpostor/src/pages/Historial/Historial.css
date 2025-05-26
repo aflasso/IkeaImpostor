@@ -1,0 +1,58 @@
+.historial-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.historial-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+.compra-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.compra-card:hover {
+  transform: scale(1.02);
+}
+
+.compra-card p {
+  margin: 0.5rem 0;
+  color: #444;
+  font-size: 1rem;
+}
+
+.compra-card strong {
+  color: #000;
+}
+
+.compra-card ul {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.compra-card li {
+  padding: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .compra-card {
+    padding: 1rem;
+  }
+
+  .historial-container h2 {
+    font-size: 1.5rem;
+  }
+}
