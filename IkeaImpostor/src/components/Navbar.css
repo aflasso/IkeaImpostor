@@ -63,7 +63,7 @@ header {
 /* === Responsivo === */
 @media (max-width: 768px) {
   .menu-toggle {
-  display: none;
+  display: inline-flex;
   background: none;
   border: none;
   font-size: 1.5rem;
